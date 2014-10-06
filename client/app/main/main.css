@@ -163,7 +163,7 @@ canvas {
 
   @bottom {
     color: #000;
-    content: "PAGE";
+    content: "Page " counter(page) " of " counter(pages);
   }
 
 }
