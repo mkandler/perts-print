@@ -1,0 +1,152 @@
+p {
+    font-family: "Georgia", serif;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.print-layout {
+  position: relative;
+  display: block;
+  width: 820px;
+  color: #404040;
+  font-size: 20px;
+  margin: 0px auto 60px auto;
+}
+.print-header {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+}
+.graph-holder {
+  position: relative;
+  border: 2px solid #3faeec;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+.graph-holder h3 {
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  margin-left: 5px;
+  text-align: left;
+}
+.graph-label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border: 15px solid #3faeec;
+  border-radius: 10px;
+  width: 90px;
+  text-align: center;
+  height: 0px;
+}
+.graph-label_text {
+  position: absolute;
+  top: -10px;
+  font-size: 14px;
+  color: #fff;
+}
+.print-col {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 1%;
+  margin-bottom: 15px;
+}
+.print-col:first-child {
+  margin-left: 0px;
+  margin-right: 1%;
+}
+.print-col-2 {
+  width: 48%;
+}
+.blue-line {
+  width: 40%;
+  border-width: 0 40px 50px 0;
+  border-style: solid;
+  border-color: #fff;
+  border-bottom-color: #3faeec;
+  margin-bottom: 15px;
+}
+canvas {
+  margin: 0 5px;
+}
+.graph-holder p {
+  text-align: left;
+  font-size: 14px;
+  margin: 8px;
+}
+.break { 
+    page-break-before: always; 
+}
+.break:before {
+    counter-increment: page;
+}
+
+@media print {
+
+  html, body, div[ng-view] {
+    /* Need to remove 'fancy' overflow settings */
+    overflow: visible !important;
+  }
+  body, .print-layout {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  canvas.pie-chart {
+    width: 100px;
+    height: 100px;
+  }
+  canvas.pie-chart--tiny {
+    width: 65px;
+    height: 65px;
+  }
+  canvas.bar-graph {
+    width: 240px;
+    height: 160px;
+  }
+  .graph-holder p {
+    font-size: 9pt;
+  }
+  .print-header {
+    padding-top: 0px;
+  }
+  p {
+    font-size: 11pt;
+  }
+  ul, img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+}
+
+@page {
+
+  margin: 2.5cm;
+  counter-increment: page;
+  counter-reset: page 1;
+
+  @bottom {
+    color: #000;
+    content: "PAGE";
+  }
+
+}
+
+/* Alternative to @page numbering */
+
+/*.print-layout {
+  display: table;
+}
+
+#pageFooter {
+  display: table-footer-group;
+}
+
+#pageFooter:after {
+  counter-increment: page;
+  content: counter(page);
+}*/

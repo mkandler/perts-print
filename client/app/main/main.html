@@ -1,0 +1,92 @@
+<div class="print-layout">
+
+  <!-- Alternative to @page numbering -->
+  <!-- <div id="pageFooter">Page </div> -->
+
+  <div class="print-header">
+    <image src="/assets/images/perts-logo.png"/>
+  </div>
+
+  <div class="blue-line"></div>
+
+  <h1>Headline</h1>
+
+  <div class="print-columns">
+
+    <div class="print-col print-col-2">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit dignissim sapien, eget molestie tortor molestie posuere. Fusce iaculis, diam malesuada efficitur porttitor, orci ipsum pulvinar nisl, quis blandit massa arcu quis purus. Quisque ullamcorper orci dui, eget fringilla sapien tincidunt et. Nulla iaculis, eros at pulvinar tempus, purus odio lacinia odio, sed iaculis orci leo in elit. Duis tincidunt finibus augue sit amet volutpat. Suspendisse potenti. Nunc justo ipsum, eleifend nec velit id, hendrerit interdum dui. Fusce non consectetur orci. Aenean rhoncus est a orci imperdiet ornare.
+      </p>
+    </div>
+
+    <!-- Pie chart with labels -->
+
+    <div class="print-col print-col-2 graph-holder">
+      <div class="graph-label">
+        <div class="graph-label_text">
+          Figure 1
+        </div>
+      </div>
+      <h3>Graph section</h3>
+      <canvas id="firstChart" class="pie-chart" width="150" height="150"></canvas>
+      <canvas id="secondChart" class="pie-chart" width="150" height="150"></canvas>
+      <canvas id="thirdChart" class="pie-chart" width="150" height="150"></canvas>
+    </div>
+
+  </div>
+
+  <!-- Print page break -->
+
+  <div class="break"></div>
+
+  <p>
+    Pellentesque at finibus nulla. Maecenas erat felis, convallis sit amet congue sed, dapibus id libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed facilisis malesuada arcu vitae bibendum. Sed laoreet nisl arcu, eu iaculis urna sodales ultrices. Ut eu nulla vitae nulla semper consequat nec a est. Aliquam sed interdum lorem. Maecenas faucibus vel erat quis feugiat. Maecenas odio orci, gravida sit amet magna nec, efficitur porttitor ante. Sed pulvinar cursus elementum.
+  </p>
+  
+  <p>  
+    Curabitur accumsan tincidunt massa vehicula consequat. Vivamus dapibus risus nibh, at mollis nunc rhoncus in. Sed eu sem diam. Suspendisse urna felis, varius id orci at, fringilla sodales lectus. Praesent vestibulum nibh vitae mi sodales fringilla. Donec et elementum nibh, et dignissim mauris. Vestibulum condimentum cursus metus non laoreet. Nullam pellentesque magna nunc, tincidunt elementum tortor volutpat id. Etiam egestas tempor sodales.
+  </p>
+
+  <div class="print-columns">
+
+    <!-- Bar graph -->
+
+    <div class="print-col print-col-2 graph-holder" style="text-align: center">
+      <div class="graph-label">
+        <div class="graph-label_text">
+          Figure 2
+        </div>
+      </div>
+      <h3>Graph section</h3>
+      <canvas id="barOne" class="bar-graph" width="360" height="250"></canvas>
+    </div>
+
+    <!-- Pie chart with labels -->
+
+    <div class="print-col print-col-2 graph-holder">
+      <div class="graph-label">
+        <div class="graph-label_text">
+          Figure 3
+        </div>
+      </div>
+      <h3>Graph section</h3>
+      <canvas id="chart4" class="pie-chart--tiny" width="100" height="100"></canvas>
+      <canvas id="chart5" class="pie-chart--tiny" width="100" height="100"></canvas>
+      <canvas id="chart6" class="pie-chart--tiny" width="100" height="100"></canvas>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit dignissim sapien, eget molestie tortor molestie posuere.</p>
+    </div>
+
+  </div>
+
+  <!-- Same code (prettified) -->
+
+  <pre class="prettyprint">
+    
+    PertsPie("firstChart", data1);
+    PertsPie("secondChart", data2);
+    PertsPie("thirdChart", data3);
+
+    PertsBar("barOne", barOneData);
+  </pre>
+
+</div>
