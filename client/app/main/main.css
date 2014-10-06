@@ -1,9 +1,29 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+div[ng-view] {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
 p {
     font-family: "Georgia", serif;
 }
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+/* Print page specific style */
+
 .print-layout {
   position: relative;
   display: block;
@@ -17,12 +37,32 @@ p {
   padding: 10px 0px;
   margin-bottom: 10px;
 }
+.blue-line {
+  width: 40%;
+  border-width: 0 40px 50px 0;
+  border-style: solid;
+  border-color: #fff;
+  border-bottom-color: #3faeec;
+  margin-bottom: 15px;
+}
+.break { 
+  page-break-before: always; 
+}
+.break:before {
+  counter-increment: page;
+}
+
+/* Graph styles */
+
 .graph-holder {
   position: relative;
   border: 2px solid #3faeec;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 15px; 
   text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px; 
 }
 .graph-holder h3 {
   margin-top: 35px;
@@ -36,10 +76,13 @@ p {
   top: 15px;
   left: 15px;
   border: 15px solid #3faeec;
-  border-radius: 10px;
   width: 90px;
-  text-align: center;
   height: 0px;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
 }
 .graph-label_text {
   position: absolute;
@@ -47,6 +90,17 @@ p {
   font-size: 14px;
   color: #fff;
 }
+canvas {
+  margin: 0 5px;
+}
+.graph-holder p {
+  text-align: left;
+  font-size: 14px;
+  margin: 8px;
+}
+
+/* Custom two-column format */
+
 .print-col {
   display: inline-block;
   vertical-align: top;
@@ -59,28 +113,6 @@ p {
 }
 .print-col-2 {
   width: 48%;
-}
-.blue-line {
-  width: 40%;
-  border-width: 0 40px 50px 0;
-  border-style: solid;
-  border-color: #fff;
-  border-bottom-color: #3faeec;
-  margin-bottom: 15px;
-}
-canvas {
-  margin: 0 5px;
-}
-.graph-holder p {
-  text-align: left;
-  font-size: 14px;
-  margin: 8px;
-}
-.break { 
-    page-break-before: always; 
-}
-.break:before {
-    counter-increment: page;
 }
 
 @media print {
@@ -136,7 +168,7 @@ canvas {
 
 }
 
-/* Alternative to @page numbering */
+/* Alternative to @page numbering NOT IN USE */
 
 /*.print-layout {
   display: table;

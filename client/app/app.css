@@ -30,18 +30,3 @@
 /**
  * App-wide Styles
  */
-
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-div[ng-view] {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-}
-html {
-    box-sizing: border-box;
-}
