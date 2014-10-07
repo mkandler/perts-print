@@ -3,119 +3,104 @@
 angular.module('pertsPrintApp')
   .controller('MainCtrl', function ($scope, $http) {
 
-    var data1 = [
-        {
-          value: 3/17 * 100,
-          color:"#ee5b40",
-          highlight: "#ee5b40",
-          label: "Red"
-        },
-        {
-          value: 4/17 * 100,
-          color: "#fff44f",
-          highlight: "#fff44f",
-          label: "Yellow"
-        },
-        {
-          value: 10/17 * 100,
-          color: "#a3cf63",
-          highlight: "#a3cf63",
-          label: "Green"
-        }
-      ];
+    // Dumby data for charts
 
-    var data2 = [
-        {
-          value: 1/16 * 100,
-          color:"#ee5b40",
-          highlight: "#ee5b40",
-          label: "Red"
-        },
-        {
-          value: 7/16 * 100,
-          color: "#fff44f",
-          highlight: "#fff44f",
-          label: "Yellow"
-        },
-        {
-          value: 8/16 * 100,
-          color: "#a3cf63",
-          highlight: "#a3cf63",
-          label: "Green"
-        }
-      ];
+    var data1 = [3/17 * 100, 4/17 * 100, 10/17 * 100];
+    var data2 = [1/16 * 100, 7/16 * 100, 8/16 * 100];
+    var data3 = [5/15 * 100, 3/15 * 100, 7/15 * 100];
+    var data4 = [65, 28, 35];
 
-    var data3 = [
-        {
-          value: 5/15 * 100,
-          color:"#ee5b40",
-          highlight: "#ee5b40",
-          label: "Red"
-        },
-        {
-          value: 3/15 * 100,
-          color: "#fff44f",
-          highlight: "#fff44f",
-          label: "Yellow"
-        },
-        {
-          value: 7/15 * 100,
-          color: "#a3cf63",
-          highlight: "#a3cf63",
-          label: "Green"
-        }
-      ];
-
-    var barOneData = {
-      labels: ["Mindset Distrbution"],
-      datasets: [
-        {
-          label: "My First dataset",
-          fillColor: "#ee5b40",
-          strokeColor: "#ee5b40",
-          highlightFill: "#ee5b40",
-          highlightStroke: "#ee5b40",
-          data: [65]
-        },
-        {
-          label: "My Second dataset",
-          fillColor: "#fff44f",
-          strokeColor: "#fff44f",
-          highlightFill: "#fff44f",
-          highlightStroke: "#fff44f",
-          data: [28]
-        },
-        {
-          label: "My Third dataset",
-          fillColor: "#a3cf63",
-          strokeColor: "#a3cf63",
-          highlightFill: "#a3cf63",
-          highlightStroke: "#a3cf63",
-          data: [28]
-        }
-      ]
-    };
-
+    // Drawing pie charts in figure 1
 
     PertsPie("firstChart", data1);
     PertsPie("secondChart", data2);
     PertsPie("thirdChart", data3);
 
+    // Drawing bar graph in figure 2
+
+    PertsBar("barOne", 'Mindset Distributions', data4);
+
+    // Drawing pie charts in figure 3
+
     PertsPie("chart4", data1);
     PertsPie("chart5", data2);
     PertsPie("chart6", data3);
 
-    PertsBar("barOne", barOneData);
+    // Function to display Pie Chart with data labels
 
     function PertsPie(chartId, data) {
+      var formattedData = formatPieData(data);
       var ctx = document.getElementById(chartId).getContext("2d");
-      var chart = new Chart(ctx).PieLabeled(data, []);
+      // create chart using Chart.js
+      var chart = new Chart(ctx).PieLabeled(formattedData, []);
+      // remove added height and width to keep chart responsive
       document.getElementById(chartId).removeAttribute("style");
     }
-    function PertsBar(chartId, data) {
+
+    // Function to display Bar Graph
+
+    function PertsBar(chartId, title, data) {
+      var formattedData = formatBarData(title, data);
       var ctx = document.getElementById(chartId).getContext("2d");
-      var chart = new Chart(ctx).Bar(data, {barDatasetSpacing : 8});
+      // create chart using Chart.js
+      var chart = new Chart(ctx).Bar(formattedData, {barDatasetSpacing : 8});
+      // remove added height and width to keep chart responsive
       document.getElementById(chartId).removeAttribute("style");
+    }
+
+    // Function to format array of data for Pie Charts
+
+    function formatPieData(data) {
+      var redColor = '#ee5b40',
+          yellowColor = '#fff44f',
+          greenColor = '#a3cf63';
+          
+      return [
+        {
+          value: data[0],
+          color: redColor
+        },
+        {
+          value: data[1],
+          color: yellowColor
+        },
+        {
+          value: data[2],
+          color: greenColor
+        }
+      ];
+    }
+
+    // Function to format array of data for Bar Graphs
+
+    function formatBarData(title, data) {
+      var redColor = '#ee5b40',
+          yellowColor = '#fff44f',
+          greenColor = '#a3cf63';
+
+      return {
+        labels: [title],
+        datasets: [
+          {
+            label: '',
+            fillColor: redColor,
+            strokeColor: redColor,
+            data: [data[0]]
+          },
+          {
+            label: '',
+            fillColor: yellowColor,
+            strokeColor: yellowColor,
+            data: [data[1]]
+          },
+          {
+            label: '',
+            fillColor: greenColor,
+            strokeColor: greenColor,
+            data: [data[2]]
+          }
+        ]
+      };
     }
 
   });
